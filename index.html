@@ -71,7 +71,7 @@
       width: 100vw;
       height: 100vh;
       text-align: center;
-      animation: topPos 3s infinite;
+      /* animation: topPos 3s infinite; */
       overflow: hidden;
     }
     @media only screen and (max-width: 600px) {
@@ -84,7 +84,7 @@
     }
 }
     .eachHbd {
-      animation: spring 3s infinite;
+      animation: spring 2s infinite ease-in-out;
     }
     </style>
   </head>
@@ -128,8 +128,8 @@
         hbd.innerText = `Happy ${currentAge}st Birthday Gina`
         hbd.classList.add('eachHbd')
         var fontSizeText=  "font-size:"+ 80/(Math.log(21-i)) +'px;';
-        var fontColorText=`color:hsl(${i*20}, 100%, 50%);`
-        var shadowText =`text-shadow: 1px 1px black;`;
+        var fontColorText=`color:hsl(100, ${i*4}%, 50%);`
+        var shadowText =`text-shadow: 2px 2px black;`;
         // var lineHeightText=`line-height:${i*3}%;`
         hbd.style.cssText= fontSizeText.concat(fontColorText).concat(shadowText)//.concat(lineHeightText)
         //"font-size:"+ 80/(Math.log(21-i)) +'px';
