@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <title> ! Happy Birthday Gina ! </title>
+    <link href="./partyparrot.gif" rel="icon" data-n-head="true" sizes="16x16" type="image/png">
+    <style>
+
+/* Safari 4.0 - 8.0 */
+    @keyframes shake {
+      0%, 100% {transform: rotateZ(0);}
+
+      33% {transform: rotateZ(30deg);}
+
+      66% {transform: rotateZ(-30deg);}
+    }
+    @keyframes spring {
+      0%, 100% {line-height: 5%;}
+
+      50% {line-height: 80%;}
+    }
+    @keyframes topPos {
+      0%, 100% {padding-top: 300px; transform:}
+
+      50% {padding-top: 0; transform:}
+    }
+    body {
+      height: 100vh;
+      background-color: red; /* For browsers that do not support gradients */
+      background-image: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet); /* Standard syntax (must be last) */
+      overflow: hidden;
+    }
+    .contaner {
+      position: relative;
+    }
+    .rotating {
+      animation: shake 4s infinite;
+      width: 200px;
+      height: auto;
+      text-align: center;
+      font-size: 20px;
+    }
+    .rotating img {
+      width: 100%;
+    }
+    .gina.left {
+      position: absolute;
+      left: 0;
+    }
+    .gina { position: absolute;}
+    .gina.right {
+      position: absolute;
+      right: 0;
+      top: 100px;
+    }
+
+    .cake {
+      position: absolute;
+      transform: translateX(50vw);
+      bottom: 50px;
+      width: 250px;
+    }
+    .cake img {
+      transform: translateX(-125px);
+      width: 100%;
+    }
+
+    .hbdWrapper {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      text-align: center;
+      animation: topPos 3s infinite;
+      overflow: hidden;
+    }
+    @media only screen and (max-width: 600px) {
+      .hbdWrapper {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      text-align: center;
+      animation: none;
+    }
+}
+    .eachHbd {
+      animation: spring 3s infinite;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="container" class="container">
+      <div id="ginaContainer"></div>
+      <div id="hbd" class="hbdWrapper"></div>
+    </div>
+  </body>
+  <script>
+    var sentenceNum = 20;
+    var hbdWrapperElem = document.getElementById('hbd');
+    var scale = 0;
+    var bdayYear = 1987;
+    var d = new Date();
+    var n = d.getFullYear();
+    var currentAge = n - bdayYear -1;
+
+    var ginaNum = 30;
+    var w = window.innerWidth - 100;
+    var h = window.innerHeight - 100;
+    var maxWidth=120;
+    var minWidth = 80;
+    for (var i = 0; i < ginaNum; i++) {
+      var ginaElem = document.createElement('div')
+      ginaElem.innerHTML = '<img src="./gina.png" alt="this is birthday girl, gina"><div>ㅊㅋㅊㅋ</div>';
+      ginaElem.classList.add('rotating');
+      ginaElem.classList.add('gina');
+      var randomW = Math.random()*w;
+      var randomH = Math.random()*h;
+      var randomWidth= Math.random()*maxWidth+minWidth;
+
+      ginaElem.style.cssText=`left:${randomW}px;top:${randomH}px;width:${randomWidth}px;`
+
+      var containerElem = document.getElementById('ginaContainer')
+      containerElem.appendChild(ginaElem);
+    }
+    if(w >600) {
+      for(var i = 0; i< sentenceNum; i++) {
+        var hbd = document.createElement('div')
+        hbd.innerText = `Happy ${currentAge}st Birthday Gina`
+        hbd.classList.add('eachHbd')
+        var fontSizeText=  "font-size:"+ 80/(Math.log(21-i)) +'px;';
+        var fontColorText=`color:hsl(${i*20}, 100%, 50%);`
+        var shadowText =`text-shadow: 1px 1px black;`;
+        // var lineHeightText=`line-height:${i*3}%;`
+        hbd.style.cssText= fontSizeText.concat(fontColorText).concat(shadowText)//.concat(lineHeightText)
+        //"font-size:"+ 80/(Math.log(21-i)) +'px';
+        hbdWrapperElem.appendChild(hbd)
+      }
+    }
+
+  </script>
+</html>
